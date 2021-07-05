@@ -1,7 +1,7 @@
 from flask import Flask, redirect, request
 
 from database import Database
-
+from utils import check_and_wrap_url
 
 app = Flask(__name__)
 db = Database()
@@ -23,9 +23,9 @@ def redirect_to_url_by_code(code: str):
 @app.route('/~', methods=['GET', 'POST'])
 def shorten_link():
     if url := request.args.get('url'):
-        return 'https://termisaal.ru/' + db.add_url(url)
-    else:
-        return redirect('/')
+        if url := check_and_wrap_url(url):
+            return 'https://termisaal.ru/' + db.add_url(url)
+    return redirect('/')
 
 
 if __name__ == '__main__':
