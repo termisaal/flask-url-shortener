@@ -1,5 +1,8 @@
 from flask import Flask, redirect, request
 
+from database import Database
+
+
 app = Flask(__name__)
 
 
