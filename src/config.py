@@ -1,2 +1,2 @@
 class Database:
-    location = './database.py'
+    location = './database.sqlite'
