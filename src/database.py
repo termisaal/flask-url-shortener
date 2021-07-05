@@ -7,15 +7,12 @@ from utils import make_code
 
 class Database:
     def __init__(self):
-        self._conn = sqlite3.connect(cf.Database.location)
         self.setup()
 
-    def __del__(self):
-        self._conn.close()
-
-    def setup(self):
-        with self._conn:
-            self._conn.execute('''
+    @staticmethod
+    def setup():
+        with sqlite3.connect(cf.Database.location) as conn:
+            conn.execute('''
                 CREATE TABLE IF NOT EXISTS URLs (
                     id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
                     code TEXT NOT NULL UNIQUE,
@@ -25,17 +22,19 @@ class Database:
                 )
             ''')
 
-    def _get_urls_count(self) -> int:
-        with self._conn:
-            result = self._conn.execute('''
+    @staticmethod
+    def _get_urls_count() -> int:
+        with sqlite3.connect(cf.Database.location) as conn:
+            result = conn.execute('''
                 SELECT COUNT(*) 
                 FROM URLs
             ''').fetchone()
         return result[0]
 
-    def _get_code_by_url(self, url: str) -> Optional[str]:
-        with self._conn:
-            result = self._conn.execute(f'''
+    @staticmethod
+    def _get_code_by_url(url: str) -> Optional[str]:
+        with sqlite3.connect(cf.Database.location) as conn:
+            result = conn.execute(f'''
                 SELECT code
                 FROM URLs
                 WHERE url = '{url}'
@@ -43,32 +42,31 @@ class Database:
         return result[0] if result else None
 
     def add_url(self, url: str) -> str:
-        with self._conn:
+        with sqlite3.connect(cf.Database.location) as conn:
             if code := self._get_code_by_url(url):
                 pass
             else:
                 code = make_code(self._get_urls_count() + 1)
-                with self._conn:
-                    self._conn.execute(f'''
-                        INSERT INTO URLs (code, url) 
-                        VALUES ('{code}', '{url}')
-                    ''')
+                conn.execute(f'''
+                    INSERT INTO URLs (code, url) 
+                    VALUES ('{code}', '{url}')
+                ''')
         return code
 
-    def get_url_by_code(self, code: str) -> Optional[str]:
-        with self._conn:
-            result = self._conn.execute(f'''
+    @staticmethod
+    def get_url_by_code(code: str) -> Optional[str]:
+        with sqlite3.connect(cf.Database.location) as conn:
+            result = conn.execute(f'''
                 SELECT url, uses, date
                 FROM URLs
                 WHERE code = '{code}'
             ''').fetchone()
         if result:
-            with self._conn:
-                self._conn.execute(f'''
-                    UPDATE URLs
-                    SET uses = uses + 1
-                    WHERE code = '{code}'
-                ''')
+            conn.execute(f'''
+                UPDATE URLs
+                SET uses = uses + 1
+                WHERE code = '{code}'
+            ''')
             return result
         else:
             return None
