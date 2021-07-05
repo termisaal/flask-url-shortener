@@ -15,9 +15,9 @@ def index():
 @app.route('/<code>')
 def redirect_to_url_by_code(code: str):
     if url := db.get_url_by_code(code):
-        redirect(url)
+        return redirect(url)
     else:
-        redirect('/')
+        return redirect('/')
 
 
 @app.route('/~', methods=['GET', 'POST'])
