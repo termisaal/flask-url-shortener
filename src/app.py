@@ -9,7 +9,7 @@ db = Database()
 
 @app.route('/')
 def index():
-    return 'main page'
+    return 'Main page'
 
 
 @app.route('/<code>')
