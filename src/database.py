@@ -67,6 +67,6 @@ class Database:
                 SET uses = uses + 1
                 WHERE code = '{code}'
             ''')
-            return result
+            return result[0]
         else:
             return None
