@@ -4,6 +4,7 @@ from database import Database
 
 
 app = Flask(__name__)
+db = Database()
 
 
 @app.route('/')
@@ -11,15 +12,18 @@ def index():
     return 'main page'
 
 
-@app.route('/<shortened_url>')
-def redirect_to_url(shortened_url):
-    return redirect(shortened_url)
+@app.route('/<code>')
+def redirect_to_url_by_code(code: str):
+    if url := db.get_url_by_code(code):
+        redirect(url)
+    else:
+        redirect('/')
 
 
 @app.route('/~', methods=['GET', 'POST'])
 def shorten_link():
     if url := request.args.get('url'):
-        return url
+        return 'https://termisaal.ru/' + db.add_url(url)
     else:
         return redirect('/')
 
