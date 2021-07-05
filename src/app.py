@@ -1,4 +1,4 @@
-from flask import Flask, redirect, request
+from flask import Flask, redirect, render_template, request
 
 from database import Database
 from utils import check_and_wrap_url
@@ -9,7 +9,7 @@ db = Database()
 
 @app.route('/')
 def index():
-    return 'Main page'
+    return render_template('index.html')
 
 
 @app.route('/<code>')
