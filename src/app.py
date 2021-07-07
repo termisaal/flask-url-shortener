@@ -25,7 +25,7 @@ def shorten_link():
     if url := request.args.get('url'):
         if url := check_and_wrap_url(url):
             return 'https://termisaal.ru/' + db.add_url(url)
-    return 'Wrong URL'
+    return 'Invalid request'
 
 
 if __name__ == '__main__':
