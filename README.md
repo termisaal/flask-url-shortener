@@ -1,4 +1,4 @@
-![Python](https://img.shields.io/badge/python-3.9-blue) 
+![Python](https://img.shields.io/badge/python-3.9.1-blue) 
 ![Flask](https://img.shields.io/badge/flask-2.0.1-blue) 
 
 ## Introduction
