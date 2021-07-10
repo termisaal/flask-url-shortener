@@ -1,10 +1,18 @@
-from flask import Flask, redirect, render_template, request
+import os
+
+from flask import Flask, redirect, render_template, request, send_from_directory
 
 from database import Database
 from utils import check_and_wrap_url
 
 app = Flask(__name__)
 db = Database()
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static/images'), 'icon.png',
+                               mimetype='image/vnd.microsoft.icon')
 
 
 @app.route('/')
