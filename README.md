@@ -2,7 +2,7 @@
 ![Flask](https://img.shields.io/badge/flask-2.0.1-blue) 
 
 ## Introduction
-Simple URL shortener written with Flask
+URL shortener written with Flask
 
 ## Installation
 1. Clone this repository
