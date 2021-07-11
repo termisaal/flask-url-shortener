@@ -4,10 +4,13 @@
     <meta charset="utf-8">
     <title>URL Shortener</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 </head>
 <body>
-<div id="req-box" class="unselectable centered">
-    <a id="met" class="rainbow">GET</a><a>/~?url={url}</a>
+<button id="day-night-button" class="unselectable" onclick="changeTheme()">🌑</button>
+<div id="main-box" class="centered unselectable">
+    <b class="rainbow-text" style="font-size: 48px; padding-right: 16px">GET</b>
+    <a class="common-text" style="font-size: 32px">/~?url={url}</a>
 </div>
 </body>
 </html>

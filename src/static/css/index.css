@@ -1,21 +1,26 @@
 body {
     background-color: black;
+    transition: background-color 500ms ease;
 }
 
-#req-box {
-    font-family: Consolas, monospace;
-    font-size: 32px;
-    color: white;
+#main-box {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-#met {
-    font-weight: bold;
-    font-size: 42px;
-    padding-right: 16px;
+#day-night-button {
+    background-color: inherit;
+    border: none;
+    padding: 0 0;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    transition: font-size 250ms ease, right 250ms ease, bottom 250ms ease;
 }
 
 .centered {
@@ -30,7 +35,14 @@ body {
     -webkit-user-select: none;
 }
 
-.rainbow {
+.common-text {
+    font-family: Consolas, monospace;
+    color: white;
+    transition: color 500ms ease;
+}
+
+.rainbow-text {
+    font-family: Consolas, monospace;
     animation: rainbow_animation 15s linear 0s infinite;
 }
 
