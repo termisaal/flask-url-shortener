@@ -32,8 +32,9 @@ def redirect_to_url_by_code(code: str):
 def shorten_link():
     if url := request.args.get('url'):
         if url := check_and_wrap_url(url):
-            return 'https://termisaal.ru/' + db.add_url(url)
-    return 'Invalid request'
+            return request.url_root + db.add_url(url)
+        return 'Invalid URL'
+    return 'Invalid request body'
 
 
 if __name__ == '__main__':
