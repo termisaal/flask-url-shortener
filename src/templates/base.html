@@ -7,12 +7,10 @@
     <script src="{{ url_for('static', filename='js/base.js') }}"></script>
     {% block head %}{% endblock %}
 </head>
-<body theme="light" onload="onLoad()">
-<button id="day-night-button" class="unselectable" onclick="changeTheme()">🌑</button>
+<body theme="{{ theme }}" onload="console.log(document.cookie)">
+<button id="day-night-button" class="unselectable" onclick="changeTheme()">
+    {{ '🌑' if theme == 'dark' else '☀️' }}
+</button>
 {% block content %}{% endblock %}
-<div id="main-box" class="centered unselectable">
-    <b class="rainbow-text" style="font-size: 48px; padding-right: 16px">GET</b>
-    <a class="common-text no-transition" style="font-size: 32px">/~?url={url}</a>
-</div>
 </body>
 </html>

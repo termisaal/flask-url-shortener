@@ -15,9 +15,13 @@ def favicon():
                                mimetype='image/vnd.microsoft.icon')
 
 
+def get_theme():
+    return request.cookies.get('theme') or 'dark'
+
+
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', theme=get_theme())
 
 
 @app.route('/<code>')
