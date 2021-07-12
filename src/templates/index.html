@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="utf-8">
-    <title>URL Shortener</title>
+{% extends 'base.html' %}
+
+{% block title %}Укорачиватель URL{% endblock %}
+{% block head %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
-    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
-</head>
-<body>
-<button id="day-night-button" class="unselectable" onclick="changeTheme()">🌑</button>
-<div id="main-box" class="centered unselectable">
-    <b class="rainbow-text" style="font-size: 48px; padding-right: 16px">GET</b>
-    <a class="common-text" style="font-size: 32px">/~?url={url}</a>
-</div>
-</body>
-</html>
+{% endblock %}
+{% block content %}
+    <div id="main-box" class="centered unselectable">
+        <b class="rainbow-text" style="font-size: 48px; padding-right: 16px">GET</b>
+        <a class="common-text no-transition" style="font-size: 32px">/~?url={url}</a>
+    </div>
+{% endblock %}

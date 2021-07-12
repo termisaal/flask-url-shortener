@@ -1,0 +1,87 @@
+[theme="light"] {
+    --background-color: white;
+    --common-text-color: black;
+}
+
+[theme="dark"] {
+    --background-color: black;
+    --common-text-color: white;
+}
+
+body {
+    background-color: var(--background-color);
+    transition: background-color 500ms ease;
+}
+
+#day-night-button {
+    background-color: inherit;
+    border: none;
+    padding: 0 0;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    transition: font-size 250ms ease, right 250ms ease, bottom 250ms ease;
+}
+
+.centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.unselectable {
+    user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+}
+
+.common-text {
+    font-family: Consolas, monospace;
+    color: var(--common-text-color);
+    transition: color 500ms ease;
+}
+
+.rainbow-text {
+    font-family: Consolas, monospace;
+    animation: rainbow_animation 15s linear 0s infinite;
+}
+
+@keyframes rainbow_animation {
+    from {
+        color: hsl(0, 100%, 50%);
+    }
+    10% {
+        color: hsl(36, 100%, 50%);
+    }
+    20% {
+        color: hsl(72, 100%, 50%);
+    }
+    30% {
+        color: hsl(108, 100%, 50%);
+    }
+    40% {
+        color: hsl(144, 100%, 50%);
+    }
+    50% {
+        color: hsl(180, 100%, 50%);
+    }
+    60% {
+        color: hsl(216, 100%, 50%);
+    }
+    70% {
+        color: hsl(252, 100%, 50%);
+    }
+    80% {
+        color: hsl(288, 100%, 50%);
+    }
+    90% {
+        color: hsl(324, 100%, 50%);
+    }
+    100% {
+        color: hsl(360, 100%, 50%);
+    }
+}
