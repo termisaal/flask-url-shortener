@@ -7,7 +7,7 @@
     <script src="{{ url_for('static', filename='js/base.js') }}"></script>
     {% block head %}{% endblock %}
 </head>
-<body theme="{{ theme }}" onload="console.log(document.cookie)">
+<body theme="{{ theme }}">
 <button id="day-night-button" class="unselectable" onclick="changeTheme()">
     {{ '🌑' if theme == 'dark' else '☀️' }}
 </button>
