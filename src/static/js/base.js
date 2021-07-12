@@ -10,7 +10,7 @@ function changeTheme() {
 
     if (dayNightButton.innerText === "🌑") {
         dayNightButton.innerText = "☀️";
-        document.cookie = "theme=light"
+        document.cookie = "theme=light";
         console.log(document.cookie);
         document.body.setAttribute("theme", "light");
     } else {
