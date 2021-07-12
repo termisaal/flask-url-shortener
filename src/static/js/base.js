@@ -1,5 +1,5 @@
 function onLoad() {
-    document.body.setAttribute('theme', 'dark')
+    document.body.setAttribute("theme", "dark")
 }
 
 
@@ -15,9 +15,9 @@ function changeTheme() {
 
     if (dayNightButton.innerText === "🌑") {
         dayNightButton.innerText = "☀️";
-        document.body.setAttribute('theme', 'light');
+        document.body.setAttribute("theme", "light");
     } else {
         dayNightButton.innerText = "🌑";
-        document.body.setAttribute('theme', 'dark');
+        document.body.setAttribute("theme", "dark");
     }
 }
