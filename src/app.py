@@ -9,14 +9,14 @@ app = Flask(__name__)
 db = Database()
 
 
+def get_theme():
+    return request.cookies.get('theme') or 'dark'
+
+
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static/images'), 'favicon.ico',
                                mimetype='image/vnd.microsoft.icon')
-
-
-def get_theme():
-    return request.cookies.get('theme') or 'dark'
 
 
 @app.route('/')
