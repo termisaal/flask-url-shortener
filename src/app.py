@@ -15,7 +15,7 @@ def get_theme():
 
 @app.before_request
 def before_request():
-    if request.path != '/':  # remove trailing slash
+    if request.path != '/' and request.path.endswith('/'):  # remove trailing slash
         return redirect(request.path.removesuffix('/'))
 
 
