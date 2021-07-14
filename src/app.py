@@ -10,19 +10,19 @@ db = Database()
 
 
 def get_theme():
-    return request.cookies.get('theme') or 'dark'
+    return request.cookies.get('theme') or 'dark'  # cookies will be set with javascript
 
 
 @app.before_request
 def before_request():
-    if request.path != '/':
+    if request.path != '/':  # remove trailing slash
         return redirect(request.path.removesuffix('/'))
 
 
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static/images'), 'favicon.ico',
-                               mimetype='image/vnd.microsoft.icon')
+                               mimetype='image/vnd.microsoft.icon')  # i don't want to add icon in html
 
 
 @app.errorhandler(404)
