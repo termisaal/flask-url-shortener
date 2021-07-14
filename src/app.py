@@ -13,6 +13,12 @@ def get_theme():
     return request.cookies.get('theme') or 'dark'
 
 
+@app.before_request
+def before_request():
+    if request.path != '/':
+        return redirect(request.path.removesuffix('/'))
+
+
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static/images'), 'favicon.ico',
