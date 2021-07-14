@@ -19,6 +19,11 @@ def favicon():
                                mimetype='image/vnd.microsoft.icon')
 
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return redirect('/')
+
+
 @app.route('/')
 def index():
     return render_template('index.html', theme=get_theme())
